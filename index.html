@@ -2,33 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Redirect to Telegram Contact</title>
-    <script>
-        function formatNumber(input) {
-            let phoneNumber = input.replace(/[^0-9+]/g, '');
-            let hasPlus = phoneNumber.substring(0, 1) === '+';
-            if (hasPlus) {
-                return phoneNumber;
-            }
-            if (phoneNumber.length === 10) {
-                phoneNumber = '38' + phoneNumber;
-            }
-            if (phoneNumber.length === 12) {
-                phoneNumber = '+' + phoneNumber;
-            }
-
-            return phoneNumber;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TmeRedirector</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .center-message {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        function redirectToTelegram() {
-            const path = window.location.pathname;
-            if (path) {
-                let phoneNumber = formatNumber(decodeURIComponent(path));
-                window.location.href = `https://t.me/` + phoneNumber;
-            }
-        }
-        window.onload = redirectToTelegram;
-    </script>
+    </style>
 </head>
 <body>
+<div class="container center-message">
+    <h1>Input a phone number in the address bar</h1>
+</div>
 </body>
-</html>
