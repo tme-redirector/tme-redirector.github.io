@@ -5,10 +5,10 @@
     <title>TmeRedirector</title>
     <script>
         function formatNumber(input) {
-            let phoneNumber = input.replace(/[^0-9+]/g, '');
-            let hasPlus = phoneNumber.substring(0, 1) === '+';
+            let phoneNumber = input.replace(/[^0-9]/g, '');
+            let hasPlus = input.trim().substring(0, 1) === '+';
             if (hasPlus) {
-                return phoneNumber;
+                return '+' + phoneNumber;
             }
             if (phoneNumber.length === 10) {
                 phoneNumber = '38' + phoneNumber;
@@ -19,13 +19,15 @@
 
             return phoneNumber;
         }
+
         function redirectToTelegram() {
-            const path = window.location.pathname;
+            const path = window.location.pathname.replace(/^\//, '');
             if (path) {
                 let phoneNumber = formatNumber(decodeURIComponent(path));
                 window.location.href = `https://t.me/` + phoneNumber;
             }
         }
+
         window.onload = redirectToTelegram;
     </script>
 </head>
